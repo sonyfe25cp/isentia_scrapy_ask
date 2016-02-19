@@ -1,6 +1,6 @@
 #Crawler task 
 
-Crawl news pages from (www.theguardian.com)[http://www.theguardian.com] and save data into mongodb.
+Crawl news pages from www.theguardian.com and save data into mongodb.
 
 ## How to install ?
 
