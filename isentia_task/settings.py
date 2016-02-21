@@ -14,14 +14,18 @@ BOT_NAME = 'isentia_task'
 SPIDER_MODULES = ['isentia_task.spiders']
 NEWSPIDER_MODULE = 'isentia_task.spiders'
 
-MONGO_URI = ''
-MONGO_DATABASE = ''
+MONGO_URI = 'mongodb://isentia_chenjie:crawler_task@aws-us-east-1-portal.10.dblayer.com:10588,aws-us-east-1-portal.11.dblayer.com:27067'
+MONGO_DATABASE = 'isentia'
+#MONGO_URI = '10.0.1.7:27067'
+#MONGO_DATABASE = 'isentia'
 
 LOG_LEVEL = 'INFO'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # A real user agent
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36'
+
+DUPEFILTER_CLASS = 'isentia_task.misc.bloomfilter.BLOOMDupeFilter'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS=32
@@ -55,9 +59,10 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'isentia_task.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'isentia_task.misc.middleware.CustomHttpProxyMiddleware': 400,
+    'isentia_task.misc.middleware.CustomUserAgentMiddleware': 401,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -67,9 +72,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-    #'isentia_task.pipelines.IsentiaTaskPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'isentia_task.pipelines.IsentiaTaskPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
