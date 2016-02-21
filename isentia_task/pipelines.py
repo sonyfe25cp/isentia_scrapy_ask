@@ -38,5 +38,11 @@ class IsentiaTaskPipeline(object):
         self.client.close()
     
     def process_item(self, item, spider): 
+        #If we deploy multiple spider to crawl the same website, check the link before insert into db.
+        if crawler.settings.get('DISTRIBUTE_SPIDER'):
+            lc = self.db[self.collection_name].find("link":item['link']).count()
+            if lc != 0:
+                return item
+                
         self.db[self.collection_name].insert(dict(item)) 
         return item

@@ -14,12 +14,18 @@ BOT_NAME = 'isentia_task'
 SPIDER_MODULES = ['isentia_task.spiders']
 NEWSPIDER_MODULE = 'isentia_task.spiders'
 
+# Mongo settings
 MONGO_URI = 'mongodb://isentia_chenjie:crawler_task@aws-us-east-1-portal.10.dblayer.com:10588,aws-us-east-1-portal.11.dblayer.com:27067'
 MONGO_DATABASE = 'isentia'
+
 #MONGO_URI = '10.0.1.7:27067'
 #MONGO_DATABASE = 'isentia'
 
 LOG_LEVEL = 'INFO'
+
+# If this spider is deployed in distribute, set True to check link with db.
+# If not, set False to save operations with db.
+DISTRIBUTE_SPIDER = False
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # A real user agent
