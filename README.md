@@ -4,13 +4,13 @@ Crawl news pages from www.theguardian.com and save data into mongodb.
 
 ## How to install ?
 
-`pip install scrapy`
+`pip install scrapy`, the scrapy engine.
 
-`pip install pymongo`
+`pip install pymongo`, the driver for mongo db.
 
-`pip install pybloom`
+`pip install pybloom`, the bloomfilter.
 
-`pip install html2text`
+`pip install html2text`, an tool for extracting text from html.
 
 ## How to run this code?
 
