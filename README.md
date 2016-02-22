@@ -84,8 +84,8 @@ Other args:
     
 ## How to invoke the client from another python program?
 
-    from query import query
-    items = query('China', 0, 5)
+    api = QueryAPI(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
+    (total, items) = api.query('China', 0, 5)
     for item in items:
         print item['title']
 
