@@ -8,7 +8,7 @@ Crawl news pages from www.theguardian.com and save data into mongodb.
 
 `pip install pymongo`, the driver for mongo db.
 
-`pip install pybloom`, the bloomfilter.
+`pip install pybloom`, a bloomfilter.
 
 `pip install html2text`, an tool for extracting text from html.
 
@@ -107,7 +107,9 @@ Args:
     begin: the begin number of results
     number: the length of results list
 
-
+## What about unittest?
+unittest is used in thie project.
+Because functions in this project are simple and easy to implement, unittest is basic and not cover all functions.
 
 ## Other things about this task.
 If we just want to fetch news articles from now on, `sitemap` is good choice to crawl.
