@@ -2,9 +2,13 @@
 
 import unittest
 from isentia_task.misc.bloomfilter import BLOOMDupeFilter
-
-
-#Unit test about bloomfilter
+from scrapy.http.request import Request
+import tempfile 
+import shutil
+import hashlib
+'''
+Unit test about bloomfilter
+'''
 class BLOOMDupeFilterTest(unittest.TestCase):
     
     def test_filter(self):
@@ -22,27 +26,6 @@ class BLOOMDupeFilterTest(unittest.TestCase):
         assert bloomfilter.request_seen(r3)
 
         bloomfilter.close('finished')
-
-    def test_bloomfilter_path(self):
-        r1 = Request('http://scrapytest.org/1')
-        r2 = Request('http://scrapytest.org/2')
-
-        path = tempfile.mkdtemp()
-        try:
-            df = BLOOMDupeFilter(path)
-            df.open()
-            assert not df.request_seen(r1)
-            assert df.request_seen(r1)
-            df.close('finished')
-
-            df2 = BLOOMDupeFilter(path)
-            df2.open()
-            assert df2.request_seen(r1)
-            assert not df2.request_seen(r2)
-            assert df2.request_seen(r2)
-            df2.close('finished')
-        finally:
-            shutil.rmtree(path)
 
     def test_request_fingerprint(self):
         """Test if customization of request_fingerprint method will change
@@ -73,3 +56,6 @@ class BLOOMDupeFilterTest(unittest.TestCase):
         assert case_insensitive_bloomfilter.request_seen(r2)
 
         case_insensitive_bloomfilter.close('finished')
+        
+if __name__ == "__main__":
+    unittest.main()
