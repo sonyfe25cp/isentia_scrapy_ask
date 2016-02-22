@@ -89,6 +89,7 @@ Other args:
 
 ## How to deploy as an public API with an EC2 instance?
 An API is implemented based on web.py framework.
+The API oupus results in unicode.
 
 Run:
     
@@ -99,11 +100,11 @@ It's easy to deploy this as an public API service.
 
 Example:
     
-    http://127.0.0.1:8080/q/words=China,USA&begin=1&number=2
+    http://127.0.0.1:8080/q=Beijing?begin=0&number=15
 
 Args:
     
-    words: query words, if there are multiple words, please use comma to seperate.
+    q: query words, if there are multiple words, please use comma to seperate.
     begin: the begin number of results
     number: the length of results list
 

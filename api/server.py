@@ -15,7 +15,7 @@ MONGO_COLLECTION = 'isentia_items'
 api = QueryAPI(MONGO_URI, MONGO_DB, MONGO_COLLECTION)
 
 urls = (
-    "/q/words=(.+)&begin=(\d+)&number=(\d+)", "q",
+    "/q=(.+)", "q",
 )
 app = web.application(urls, globals())
 
@@ -23,18 +23,20 @@ app = web.application(urls, globals())
 the query function
 '''
 class q:
-    def GET(self, words, begin=0, number=10):
+    def GET(self, q):
         items = []
+        params = web.input(begin = 0, number = 10)
+        
         try:
             ip = web.ctx.env.get("ip")
-            (total, items) = api.query(words.split(','), int(begin), int(number))
-            logger.info('%s query [%s], return %s results', ip, words, len(items))
+            (total, items) = api.query(q.split(','), int(params.begin), int(params.number))
+            logger.info('%s query [%s], return %s results', ip, q, len(items))
         except Exception, e:
             logger.error('%s exception when querying', e)
             
         web.header('Content-Type', 'application/json')
         return items
-    
+
     
 if __name__ == "__main__":
     app.run()
