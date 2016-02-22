@@ -91,8 +91,9 @@ Other args:
 An API is implemented based on web.py framework.
 
 Run:
-
-    python server.py
+    
+    cd api
+    PYTHONPATH=.. python server.py
 
 It's easy to deploy this as an public API service.
 
