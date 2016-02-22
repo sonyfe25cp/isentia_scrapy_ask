@@ -112,9 +112,9 @@ Args:
     begin: the begin number of results
     number: the length of results list
 
-## What about unittest?
-unittest is used in thie project.
-Because functions in this project are simple and easy to implement, unittest is basic and not cover all functions.
+## What about unit test?
+`unittest` is used in thie project.
+Because functions in this project are simple and easy to implement, unit tests in this project are basic and not cover all functions.
 
 ## Other things about this task.
 If we just want to fetch news articles from now on, `sitemap` is good choice to crawl.
