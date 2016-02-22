@@ -2,7 +2,7 @@
 
 Crawl news pages from www.theguardian.com and save data into mongodb.
 
-## How to install ?
+## How to install?
 
 `pip install scrapy`, the scrapy engine.
 
