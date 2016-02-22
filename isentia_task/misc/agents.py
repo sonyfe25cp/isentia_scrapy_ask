@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 AGENTS = [
             "Avant Browser/1.2.789rel1 (http://www.avantbrowser.com)",

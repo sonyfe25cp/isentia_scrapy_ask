@@ -7,6 +7,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+"""
+Custom http proxy middle ware, avoding banned
+"""
 class CustomHttpProxyMiddleware(object):
 
     def process_request(self, request, spider):
@@ -22,16 +25,17 @@ class CustomHttpProxyMiddleware(object):
         using direct download for depth <= 2
         using proxy with probability 0.3
         """
-#        if "depth" in request.meta and int(request.meta['depth']) <= 2:
-#            return False
-#        i = random.randint(1, 10)
-#        return i <= 2
+        if crawler.settings.get('HTTP_PROXY_ENABLE'):
+            if "depth" in request.meta and int(request.meta['depth']) <= 2:
+                return False
+            i = random.randint(1, 10)
+            return i <= 2
+        else:
+            return False
 
-        #As a result of unstable of free httpproxy, I stop using proxy.
-        #If there are some stable proies, just uncomment codes above.
-        return False
-
-
+"""
+Custom user agent middleware, avoding banned
+"""
 class CustomUserAgentMiddleware(object):
     def process_request(self, request, spider):
         agent = random.choice(AGENTS)
