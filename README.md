@@ -12,6 +12,8 @@ Crawl news pages from www.theguardian.com and save data into mongodb.
 
 `pip install html2text`, an tool for extracting text from html.
 
+`pip install web.py`, a framework for web.
+
 ## How to run this code?
 
 `scrapy crawl theguardian`
@@ -96,12 +98,14 @@ Run:
     cd api
     PYTHONPATH=.. python server.py
 
-It's easy to deploy this as an public API service.
-
 Example:
     
     http://127.0.0.1:8080/q=Beijing?begin=0&number=15
 
+Online Service Demo:
+
+    http://123.57.75.68:8888/q=Beijing?begin=0&number=2
+    
 Args:
     
     q: query words, if there are multiple words, please use comma to seperate.
