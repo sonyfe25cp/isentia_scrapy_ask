@@ -13,19 +13,19 @@ Custom http proxy middle ware, avoding banned
 class CustomHttpProxyMiddleware(object):
 
     def process_request(self, request, spider):
-        if self.use_proxy(request):
+        if self.use_proxy(request, spider):
             p = random.choice(PROXIES)
             try:
                 request.meta['proxy'] = "http://%s" % p['ip_port']
             except Exception, e:
                 logger.error('error in Request is %s', e)
 
-    def use_proxy(self, request):
+    def use_proxy(self, request, spider):
         """
         using direct download for depth <= 2
         using proxy with probability 0.3
         """
-        if crawler.settings.get('HTTP_PROXY_ENABLE'):
+        if spider.settings.get('HTTP_PROXY_ENABLE'):
             if "depth" in request.meta and int(request.meta['depth']) <= 2:
                 return False
             i = random.randint(1, 10)

@@ -22,6 +22,7 @@ class TheguardianSpider(scrapy.Spider):
             
             #In the theguardian.com site, all the end page's url contains a year number.
             #This can be used as a tricky to recongize which url should be download and which should be follow.
+            #If there are other rules about pages to follow or download, rewrite this function.
             m = re.search(r'/\d{4}/', url)
             if m :
                 #print 'download this link : ', url

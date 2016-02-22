@@ -25,7 +25,7 @@ LOG_LEVEL = 'INFO'
 
 # If this spider is deployed in distribute, set True to check link with db.
 # If not, set False to save operations with db.
-DISTRIBUTE_SPIDER = False
+DISTRIBUTE_SPIDER = True
 
 # If we get stable proxies, enable it
 HTTP_PROXY_ENABLE = False
