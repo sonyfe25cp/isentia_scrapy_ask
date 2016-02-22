@@ -44,7 +44,7 @@ class IsentiaTaskPipeline(object):
         if self.check_before_insert:
             lc = self.db[self.collection_name].find({"link":item['link']}).count()
             if lc != 0:
-                logger.debug('%s has been seen in db 0000000000000000000000', item['link'])
+                logger.debug('%s has been seen in db', item['link'])
                 return item
                 
         self.db[self.collection_name].insert(dict(item)) 

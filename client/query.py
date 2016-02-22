@@ -10,13 +10,16 @@ logger = logging.getLogger(__name__)
 
 class QueryAPI:
 
+    '''
+    The API will not judge uri
+    '''
     def __init__(self, MONGO_URI, MONGO_DB, MONGO_COLLECTION):
         self.MONGO_URI = MONGO_URI
         self.MONGO_DB = MONGO_DB
         self.MONGO_COLLECTION = MONGO_COLLECTION
         self.cpc = pymongo.MongoClient(self.MONGO_URI)
         self.mdb = self.cpc[self.MONGO_DB]
-    
+        
     '''
     query keywords limit begin,number from the mongo db
     '''
