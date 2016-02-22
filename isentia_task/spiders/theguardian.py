@@ -83,6 +83,11 @@ def clean_html(raw_html):
     text = ''
     if html and len(html) > 0:
         converter = html2text.HTML2Text()
-        text = converter.handle(html)
+        try:
+            text = converter.handle(html)
+        except Exception, e:
+            text = html
+        text = text.replace('\n', '')
+            
     return text
         

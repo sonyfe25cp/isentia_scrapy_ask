@@ -27,6 +27,9 @@ LOG_LEVEL = 'INFO'
 # If not, set False to save operations with db.
 DISTRIBUTE_SPIDER = False
 
+# If we get stable proxies, enable it
+HTTP_PROXY_ENABLE = False
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # A real user agent
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36'
